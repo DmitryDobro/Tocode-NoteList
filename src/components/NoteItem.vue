@@ -75,7 +75,7 @@ export default {
 .btn {
   width: 100px;
   background-color: #fff;
-  border: 1px solid rgb(60, 36, 133);
+  border: 1px solid rgb(114, 80, 215);
   border-radius: 15px;
 }
 .note {
