@@ -1,8 +1,9 @@
 <template>
     <div class="tags-list">
       <TagItem v-for="(item, index) in items" :key="index"
-        :item="item" 
-       :class="{isPreview:isPreview, isActive:isActive}" >
+       :item="item" 
+       :class="{'hash':isPreview, isActive:isActive}"
+       @click="this.$emit('click', event)" >
       </TagItem>
     </div>
 </template>
@@ -16,7 +17,7 @@ export default {
         type: Array,
     },
      isPreview:{
-        type: Boolean,
+         type: Boolean,
         default: false
     },
     isActive: {
@@ -45,7 +46,7 @@ export default {
     background-color: #444ce0;
     color: #fff;
   }
-  &.isPreview {
+  &.hash {
     padding: 0;
     color: #444ce0;
     cursor: default;

@@ -1,7 +1,6 @@
 <template>
     <div class="tag-item"
-    :class="{isPreview:isPreview, isActive:blue}"
-    @click="handleClick">
+    :class="{isPreview:isPreview, isActive:isActive}">
         <span>{{item}}</span> 
     </div>
 </template>
@@ -22,16 +21,6 @@ export default {
         default: false
     },
      },
-     data(){
-        return{
-          blue:false
-        }
-     },
-    methods:{
-         handleClick() {
-          this.blue = !this.blue
-      }
-    }
 }
 </script>
 

@@ -2,6 +2,10 @@
     <div class="note">
         <div v-if="editMode" class="main">
             <div  class="real">
+              <div class="note-time">
+                {{note.time}}
+              </div>
+             
                 <p>Заголовок: {{note.title}}</p>
                 <p>Описание: {{note.body}}</p>
             </div>
@@ -39,15 +43,12 @@ export default {
         title:this.note.title,
         body:this.note.body
        }
-     
-        // newTitle:'',
-        // newBody:''
-       
       };
     },
     methods:{
       editTrue(){
         this.editMode = false
+
       },
       editBody(event){
         this.newNote.body = event.target.value;
@@ -56,14 +57,14 @@ export default {
           this.newNote.title = event.target.value;
       },
       editFalse(){
-        this.editMode = true
+         this.editMode = true
          this.newNote.id = this.note.id
-        this.$emit('uppdate',  this.newNote)
+         this.newNote.tags = this.note.tags
+       this.$store.dispatch('uppdateNote', this.newNote)
       },
 
-
       removeNote(){
-        this.$emit('remove', this.note)
+       this.$store.dispatch('removeNote', this.note)
       },
     }
 }
@@ -93,5 +94,13 @@ export default {
   span{
     cursor: pointer;
   }
+}
+.main{
+  position: relative;
+}
+.note-time{
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>

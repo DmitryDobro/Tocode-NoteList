@@ -1,12 +1,10 @@
 <template>
     <div >
     <note-item
-    v-for="note in notes"
+    v-for="note in getNotes"
     :key="note.id"
     class="note"
     :note="note"
-    @remove="$emit('remove', note)"
-    @uppdate="uppdateItem"
     />
   </div>
 </template>
@@ -15,10 +13,15 @@
 import NoteItem from '@/components/NoteItem.vue'
 export default {
     components:{NoteItem},
-    props:{
-        notes:{
-            type:Array,
-        },
+    // props:{
+    //     notes:{
+    //         type:Array,
+    //     },
+    // },
+    computed:{
+    getNotes(){
+      return this.$store.getters.getNotes
+    },
     },
     methods:{
         uppdateItem(newNote){
